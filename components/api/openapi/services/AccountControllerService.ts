@@ -11,25 +11,10 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 export class AccountControllerService {
     /**
-     * @param requestBody
-     * @returns any Created
+     * @returns UserRegistrationDTO OK
      * @throws ApiError
      */
-    public static registerAccount(
-        requestBody: UserRegistrationDTO,
-    ): CancelablePromise<any> {
-        return __request(OpenAPI, {
-            method: 'POST',
-            url: '/api/register',
-            body: requestBody,
-            mediaType: 'application/json',
-        });
-    }
-    /**
-     * @returns AdminUserDTO OK
-     * @throws ApiError
-     */
-    public static getAccount(): CancelablePromise<AdminUserDTO> {
+    public static getAccount(): CancelablePromise<UserRegistrationDTO> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/account',
@@ -37,15 +22,45 @@ export class AccountControllerService {
     }
     /**
      * @param requestBody
+     * @returns AdminUserDTO OK
+     * @throws ApiError
+     */
+    public static updateAccount(
+        requestBody: UserRegistrationDTO,
+    ): CancelablePromise<AdminUserDTO> {
+        return __request(OpenAPI, {
+            method: 'PUT',
+            url: '/api/account',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param requestBody
      * @returns any OK
      * @throws ApiError
      */
-    public static saveAccount(
-        requestBody: AdminUserDTO,
+    public static resendActivation(
+        requestBody: string,
     ): CancelablePromise<any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/account',
+            url: '/api/resend-activation',
+            body: requestBody,
+            mediaType: 'application/json',
+        });
+    }
+    /**
+     * @param requestBody
+     * @returns string Created
+     * @throws ApiError
+     */
+    public static registerAccount(
+        requestBody: UserRegistrationDTO,
+    ): CancelablePromise<string> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/register',
             body: requestBody,
             mediaType: 'application/json',
         });

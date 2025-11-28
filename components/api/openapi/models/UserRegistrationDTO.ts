@@ -3,19 +3,10 @@
 /* tslint:disable */
 /* eslint-disable */
 export type UserRegistrationDTO = {
-    id?: number;
-    userName: string;
     firstName?: string;
     lastName?: string;
-    email?: string;
-    imageUrl?: string;
-    activated?: boolean;
+    email: string;
     langKey?: string;
-    createdBy?: string;
-    createdDate?: string;
-    lastModifiedBy?: string;
-    lastModifiedDate?: string;
-    authorities?: Array<string>;
-    password?: string;
+    password: string;
 };
 

@@ -9,16 +9,6 @@ import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
 export class AuthenticateControllerService {
     /**
-     * @returns any OK
-     * @throws ApiError
-     */
-    public static isAuthenticated(): CancelablePromise<any> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/api/authenticate',
-        });
-    }
-    /**
      * @param requestBody
      * @returns JWTToken OK
      * @throws ApiError
@@ -28,7 +18,7 @@ export class AuthenticateControllerService {
     ): CancelablePromise<JWTToken> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/api/authenticate',
+            url: '/api/login',
             body: requestBody,
             mediaType: 'application/json',
         });

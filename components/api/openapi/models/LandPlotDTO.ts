@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { LandPlotLocationDTO } from './LandPlotLocationDTO';
-import type { UserProfileDTO } from './UserProfileDTO';
+import type { UserDTO } from './UserDTO';
 export type LandPlotDTO = {
     id?: number;
     title: string;
@@ -20,7 +20,7 @@ export type LandPlotDTO = {
     updatedAt?: string;
     deleted: boolean;
     deletedAt?: string;
-    seller: UserProfileDTO;
+    seller: UserDTO;
     location: LandPlotLocationDTO;
     areaSqm: number;
     openingWidth?: number;

@@ -3,7 +3,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export type LoginVM = {
-    username: string;
+    email: string;
     password: string;
     rememberMe?: boolean;
 };

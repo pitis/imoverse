@@ -22,7 +22,6 @@ import { useRegister } from '@/components/api/register/hooks'
 
 const signupSchema = z
   .object({
-    userName: z.string().min(3, 'Username must be at least 3 characters'),
     firstName: z.string().min(2, 'First name must be at least 2 characters'),
     lastName: z.string().min(2, 'Last name must be at least 2 characters'),
     email: z.string().email('Invalid email address'),
@@ -53,7 +52,6 @@ export default function SignupPage() {
   } = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      userName: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -68,7 +66,6 @@ export default function SignupPage() {
   const onSubmit = (data: SignupFormData) => {
     register(
       {
-        userName: data.userName,
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
@@ -111,21 +108,6 @@ export default function SignupPage() {
                   'Registration failed. Please try again.'}
               </div>
             )}
-            <div className='space-y-2'>
-              <Label htmlFor='userName'>Username</Label>
-              <Input
-                id='userName'
-                type='text'
-                placeholder='johndoe'
-                {...registerField('userName')}
-                disabled={isPending}
-              />
-              {errors.userName && (
-                <p className='text-sm text-red-500'>
-                  {errors.userName.message}
-                </p>
-              )}
-            </div>
             <div className='grid grid-cols-2 gap-4'>
               <div className='space-y-2'>
                 <Label htmlFor='firstName'>First name</Label>
