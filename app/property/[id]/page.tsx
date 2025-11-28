@@ -14,8 +14,13 @@ export function generateStaticParams() {
   }))
 }
 
-export default function PropertyDetailsPage({ params }: { params: { id: string } }) {
-  const property = mockProperties.find((p) => p.id === params.id)
+export default async function PropertyDetailsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+  const property = mockProperties.find((p) => p.id === id)
 
   if (!property) {
     notFound()
